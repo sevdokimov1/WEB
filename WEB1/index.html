@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 1</title>
+</head>
+<body>
+
+<h2>Гиперссылки</h2>
+<ul>
+    <li><a href="http://kubsu.ru/">1. Kubsu.ru (HTTP)</a></li>
+    <li><a href="https://kubsu.ru/">2. Kubsu.ru (HTTPS)</a></li>
+    <li><a href="https://kubsu.ru/"><img src="логотип.jpg" alt="Логотип КубГУ" width="100"></a></li>
+    <li><a href="/about">4. О университете</a></li>
+    <li><a href="/">5. Главная страница (сокращенная)</a></li>
+    <li><a href="#form_section">6. Перейти к форме</a></li>
+    <li><a href="?param1=value1&param2=value2&param3=value3">7. Ссылка с тремя параметрами</a></li>
+    <li><a href="?id=123">8. Ссылка с параметром id</a></li>
+    <li><a href="another_page.html">9. Страница в текущем каталоге</a></li>
+    <li><a href="about/info.html">10. Страница в каталоге about</a></li>
+    <li><a href="../parent_page.html">11. Страница на уровень выше</a></li>
+    <li><a href="../../grandparent_page.html">12. Страница на два уровня выше</a></li>
+    <li><p>13. Это пример контекстной ссылки внутри абзаца: <a href="https://example.com">перейдите по этой ссылке</a> для получения дополнительной информации.</p></li>
+    <li><a href="https://ru.wikipedia.org/wiki/HTML#История">14. Фрагмент на Wikipedia</a></li>
+    <li>
+        <img src="image_map_example.png" alt="Пример карты изображений" usemap="#mymap" width="200" height="100">
+        <map name="mymap">
+            <area shape="rect" coords="0,0,100,50" href="https://example.com/rectangle" alt="Прямоугольная область">
+            <area shape="circle" coords="150,50,25" href="https://example.com/circle" alt="Круглая область">
+        </map>
+    </li>
+    <li><a href="">16. Ссылка с пустым href</a></li>
+    <li><a>17. Ссылка без href</a></li>
+    <li><a href="https://example.com/no-follow" rel="nofollow">18. Ссылка без индексирования перехода</a></li>
+    <li><a href="https://example.com/no-index" rel="noindex">19. Ссылка без индексирования страницы</a></li>
+    <li>20. Нумерованный список ссылок с подписями:
+        <ol>
+            <li><a href="https://google.com" title="Поисковая система Google">Google</a></li>
+            <li><a href="https://yandex.ru" title="Поисковая система Яндекс">Яндекс</a></li>
+        </ol>
+    </li>
+    <li><a href="ftp://user:password@ftp.example.com/file.txt">21. FTP-файл с авторизацией</a></li>
+</ul>
+
+<h3 id="form_section">Форма</h3>
+
+<h2>Форма</h2>
+<form action="#" method="post">
+    <label for="fio">ФИО:</label>
+    <input type="text" id="fio" name="fio" required><br><br>
+
+    <label for="phone">Телефон:</label>
+    <input type="tel" id="phone" name="phone"><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br><br>
+
+    <label for="birthdate">Дата рождения:</label>
+    <input type="date" id="birthdate" name="birthdate"><br><br>
+
+    <fieldset>
+        <legend>Пол:</legend>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Мужской</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Женский</label>
+    </fieldset><br>
+
+    <label for="languages">Любимый язык программирования:</label><br>
+    <select id="languages" name="languages[]" multiple size="5">
+        <option value="pascal">Pascal</option>
+        <option value="c">C</option>
+        <option value="cpp">C++</option>
+        <option value="javascript">JavaScript</option>
+        <option value="php">PHP</option>
+        <option value="python">Python</option>
+        <option value="java">Java</option>
+        <option value="haskell">Haskell</option>
+        <option value="clojure">Clojure</option>
+        <option value="prolog">Prolog</option>
+        <option value="scala">Scala</option>
+    </select><br><br>
+
+    <label for="bio">Биография:</label><br>
+    <textarea id="bio" name="bio" rows="4" cols="50"></textarea><br><br>
+
+    <input type="checkbox" id="contract" name="contract" required>
+    <label for="contract">С контрактом ознакомлен(а)</label><br><br>
+
+    <input type="submit" value="Сохранить">
+</form>
+
+</body>
+</html>
