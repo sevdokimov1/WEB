@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUBSU.store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Шапка с логотипом -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src=logo.png alt="KUBSU.store Logo" width="60" height="60">
+                </div>
+                <nav class="main-nav">
+                    <a href="#products">Товары</a>
+                    <a href="#form">Заказ</a>
+                    <a href="#links">Ссылки</a>
+                </nav>
+            </div>
+            <div class="site-title">
+                <h1>KUBSU.store - магазин электроники</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <!-- Секция с гиперссылками -->
+        <section id="links">
+            <h2>Полезные ссылки</h2>
+            <ul class="links-list">
+                <li><a href="http://kubsu.ru">Абсолютная ссылка на kubsu.ru</a></li>
+                <li><a href="https://kubsu.ru">Абсолютная ссылка на kubsu.ru (HTTPS)</a></li>
+                <li><a href="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">Ссылка-изображение Google</a></li>
+                <li><a href="/catalog">Сокращенная ссылка на каталог</a></li>
+                <li><a href="/">Сокращенная ссылка на главную</a></li>
+                <li><a href="#table">Ссылка на таблицу ниже</a></li>
+                <li><a href="https://example.com?param1=value1&param2=value2&param3=value3">Ссылка с тремя параметрами</a></li>
+                <li><a href="https://example.com?user_id=12345">Ссылка с параметром id</a></li>
+                <li><a href="contacts.html">Относительная ссылка в текущем каталоге</a></li>
+                <li><a href="about/company.html">Относительная ссылка в каталоге about</a></li>
+                <li><a href="../page.html">Ссылка на уровень выше</a></li>
+                <li><a href="../../page.html">Ссылка на два уровня выше</a></li>
+            </ul>
+
+            <p>Это пример <a href="https://ru.wikipedia.org/wiki/Электроника" class="context-link">контекстной ссылки</a> внутри текста абзаца для получения дополнительной информации об электронике.</p>
+
+            <h3>Фрагмент на Wikipedia</h3>
+            <ul class="special-links">
+                <li><a href="">Ссылка с пустым href</a></li>
+                <li><a>Ссылка без href</a></li>
+                <li><a href="https://example.com" rel="nofollow">Ссылка без индексирования перехода</a></li>
+                <li><a href="https://example.com" rel="noopener">Ссылка без индексирования страницы</a></li>
+            </ul>
+
+            <h3>Нумерованный список ссылок с подписями</h3>
+            <ol class="numbered-links">
+                <li><a href="https://google.com">Google</a> - поисковая система</li>
+                <li><a href="https://yandex.ru">Яндекс</a> - российская поисковая система</li>
+                <li><a href="ftp://example.com/file.txt">FTP-сервер с авторизацией</a></li>
+            </ol>
+        </section>
+
+        <hr>
+
+        <!-- Секция с таблицей -->
+        <section id="table">
+            <h2>Каталог игровых компьютеров</h2>
+            <table class="products-table">
+                <thead>
+                    <tr>
+                        <th>Код</th>
+                        <th>Модель компьютера</th>
+                        <th>Процессор</th>
+                        <th>Видеокарта</th>
+                        <th>Оперативная память</th>
+                        <th>Цена</th>
+                        <th>Наличие</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GPC-001</td>
+                        <td>Alienware Aurora R15</td>
+                        <td>Intel Core i9-13900K</td>
+                        <td>NVIDIA RTX 4090</td>
+                        <td>32 GB DDR5</td>
+                        <td>289 990 ₽</td>
+                        <td>В наличии</td>
+                    </tr>
+                    <tr>
+                        <td>GPC-002</td>
+                        <td>ASUS ROG Strix GT15</td>
+                        <td>AMD Ryzen 9 7900X</td>
+                        <td>NVIDIA RTX 4080</td>
+                        <td>64 GB DDR5</td>
+                        <td>214 990 ₽</td>
+                        <td>Под заказ</td>
+                    </tr>
+                    <tr>
+                        <td>GPC-003</td>
+                        <td>MSI MEG Trident X</td>
+                        <td>Intel Core i7-13700K</td>
+                        <td>NVIDIA RTX 4070 Ti</td>
+                        <td>32 GB DDR5</td>
+                        <td>167 500 ₽</td>
+                        <td>В наличии</td>
+                    </tr>
+                    <tr>
+                        <td>GPC-004</td>
+                        <td>HP Omen 45L</td>
+                        <td>AMD Ryzen 7 7700X</td>
+                        <td>AMD Radeon RX 7900 XTX</td>
+                        <td>16 GB DDR5</td>
+                        <td>142 300 ₽</td>
+                        <td>В наличии</td>
+                    </tr>
+                    <tr>
+                        <td>GPC-005</td>
+                        <td>Lenovo Legion Tower 7i</td>
+                        <td>Intel Core i5-13600K</td>
+                        <td>NVIDIA RTX 4060 Ti</td>
+                        <td>32 GB DDR4</td>
+                        <td>98 750 ₽</td>
+                        <td>Нет в наличии</td>
+                    </tr>
+                    <tr>
+                        <td>GPC-006</td>
+                        <td>Acer Predator Orion 3000</td>
+                        <td>AMD Ryzen 5 7600X</td>
+                        <td>NVIDIA RTX 4060</td>
+                        <td>16 GB DDR4</td>
+                        <td>85 990 ₽</td>
+                        <td>В наличии</td>
+                    </tr>
+                    <tr>
+                        <td>GPC-007</td>
+                        <td>Corsair One i300</td>
+                        <td>Intel Core i9-12900K</td>
+                        <td>NVIDIA RTX 3080 Ti</td>
+                        <td>32 GB DDR5</td>
+                        <td>199 990 ₽</td>
+                        <td>Под заказ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Секция с формой -->
+        <section id="form">
+            <h2>Форма заказа</h2>
+            <form class="order-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">ФИО:</label>
+                        <input type="text" id="name" name="name" placeholder="Введите ваше ФИО">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (XXX) XXX-XX-XX">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="example@mail.ru">
+                    </div>
+                    <div class="form-group">
+                        <label for="birthdate">Дата рождения:</label>
+                        <input type="date" id="birthdate" name="birthdate">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Пол:</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="gender" value="male"> Мужской
+                        </label>
+                        <label>
+                            <input type="radio" name="gender" value="female"> Женский
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="programming-language">Любимый язык программирования:</label>
+                    <select id="programming-language" name="programming-language" class="language-select">
+                        <option value="">-- Выберите язык --</option>
+                        <option value="python">Python</option>
+                        <option value="cpp">C++</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="java">Java</option>
+                        <option value="php">PHP</option>
+                        <option value="csharp">C#</option>
+                        <option value="ruby">Ruby</option>
+                        <option value="go">Go</option>
+                        <option value="rust">Rust</option>
+                        <option value="swift">Swift</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="bio">Биография:</label>
+                    <textarea id="bio" name="bio" rows="4" placeholder="Расскажите о себе..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Отправить заявку</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Подвал -->
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; 2024 KUBSU.store. Евдокимов Александр</p>
+        </div>
+    </footer>
+</body>
+</html>
