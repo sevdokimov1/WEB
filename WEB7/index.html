@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея изображений</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .gallery-container {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .gallery {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item {
+            flex: 0 0 33.333%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 10;
+        }
+        
+        .prev-btn {
+            left: 10px;
+        }
+        
+        .next-btn {
+            right: 10px;
+        }
+        
+        .pager {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .page-info {
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* Мобильная версия */
+        @media (max-width: 768px) {
+            .gallery-item {
+                flex: 0 0 100%;
+            }
+            
+            .nav-btn {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Галерея изображений</h1>
+    
+    <div class="gallery-container">
+        <button class="nav-btn prev-btn">‹</button>
+        <button class="nav-btn next-btn">›</button>
+        
+        <div class="gallery" id="gallery">
+            <div class="gallery-item">
+                <img src="https://picsum.photos/400/300?random=1" alt="Изображение 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/400/300?random=2" alt="Изображение 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/400/300?random=3" alt="Изображение 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/400/300?random=4" alt="Изображение 4">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/400/300?random=5" alt="Изображение 5">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/400/300?random=6" alt="Изображение 6">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/400/300?random=7" alt="Изображение 7">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/400/300?random=8" alt="Изображение 8">
+            </div>
+        </div>
+    </div>
+    
+    <div class="pager">
+        <span class="page-info" id="pageInfo">Страница 1 из 3</span>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gallery = document.getElementById('gallery');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            const pageInfo = document.getElementById('pageInfo');
+            
+            let currentPage = 0;
+            let itemsPerPage;
+            let totalPages;
+            
+            // Определяем количество элементов на странице в зависимости от ширины экрана
+            function updateItemsPerPage() {
+                if (window.innerWidth <= 768) {
+                    itemsPerPage = 1;
+                } else {
+                    itemsPerPage = 3;
+                }
+                totalPages = Math.ceil(8 / itemsPerPage);
+                updateGallery();
+            }
+            
+            // Обновляем отображение галереи
+            function updateGallery() {
+                const offset = -currentPage * (100 / itemsPerPage);
+                gallery.style.transform = `translateX(${offset}%)`;
+                pageInfo.textContent = `Страница ${currentPage + 1} из ${totalPages}`;
+                
+                // Блокируем кнопки на границах
+                prevBtn.disabled = currentPage === 0;
+                nextBtn.disabled = currentPage === totalPages - 1;
+            }
+            
+            // Переход к предыдущей странице
+            prevBtn.addEventListener('click', function() {
+                if (currentPage > 0) {
+                    currentPage--;
+                    updateGallery();
+                }
+            });
+            
+            // Переход к следующей странице
+            nextBtn.addEventListener('click', function() {
+                if (currentPage < totalPages - 1) {
+                    currentPage++;
+                    updateGallery();
+                }
+            });
+            
+            // Обработчик изменения размера окна
+            window.addEventListener('resize', function() {
+                const oldItemsPerPage = itemsPerPage;
+                updateItemsPerPage();
+                
+                // Пересчитываем текущую страницу при изменении количества элементов
+                if (oldItemsPerPage !== itemsPerPage) {
+                    currentPage = Math.floor(currentPage * oldItemsPerPage / itemsPerPage);
+                    updateGallery();
+                }
+            });
+            
+            // Инициализация
+            updateItemsPerPage();
+        });
+    </script>
+</body>
+</html>
