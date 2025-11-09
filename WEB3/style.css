@@ -1,0 +1,462 @@
+/* Mobile First подход */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Шапка - Mobile First */
+#header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.site-title-mobile h1 {
+    font-size: 1.4em;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+.site-title {
+    display: none; /* Скрыт на мобильных */
+}
+
+.logo img {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Навигация - вертикальная на мобильных */
+.main-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-top: 1px solid #e1e1e1;
+    padding: 10px 0;
+}
+
+.main-nav a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.main-nav a:last-child {
+    border-bottom: none;
+}
+
+.main-nav a:hover {
+    background: #667eea;
+    color: white;
+}
+
+/* Основной контент */
+.main-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    margin: 15px auto;
+    padding: 20px;
+    width: 100%;
+}
+
+.content-section {
+    margin-bottom: 30px;
+}
+
+/* Порядок отображения на мобильных */
+#table {
+    order: 1;
+}
+
+#links {
+    order: 2;
+}
+
+#form {
+    order: 3;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Таблица - адаптивная */
+.table-container {
+    overflow-x: auto;
+    margin: 15px 0;
+}
+
+.products-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-size: 12px;
+    min-width: 600px;
+}
+
+.products-table th {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 10px 8px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+}
+
+.products-table td {
+    padding: 8px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.products-table tr:nth-child(even) {
+    background-color: #f8f9ff;
+}
+
+/* Статусы */
+.status-available {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.status-order {
+    color: #f39c12;
+    font-weight: 600;
+}
+
+.status-unavailable {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* Скрываем некоторые колонки на мобильных */
+.hide-mobile {
+    display: none;
+}
+
+/* Ссылки */
+.links-list, .special-links, .numbered-links {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.links-list li, .special-links li {
+    margin: 8px 0;
+}
+
+.numbered-links li {
+    margin: 10px 0;
+}
+
+a {
+    color: #667eea;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+.context-link {
+    font-weight: 600;
+    padding: 2px 4px;
+    border-radius: 4px;
+    background: rgba(102, 126, 234, 0.1);
+}
+
+/* Форма */
+.order-form {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+}
+
+.form-group input, 
+.form-group textarea, 
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e1e1e1;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus, 
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.language-select {
+    background: white;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23667eea' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+    padding-right: 35px;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: normal;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 20px auto 0;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Подвал */
+#footer {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    width: 100%;
+}
+
+/* Заголовки */
+h2 {
+    color: #667eea;
+    margin: 20px 0 15px;
+    font-size: 1.5em;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 8px;
+}
+
+h3 {
+    color: #764ba2;
+    margin: 20px 0 12px;
+    font-size: 1.2em;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #667eea, transparent);
+    margin: 25px 0;
+}
+
+/* ===== MEDIA QUERIES ===== */
+
+/* Планшеты (768px и выше) */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        padding: 0 20px;
+    }
+    
+    .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 15px 0;
+    }
+    
+    .site-title-mobile {
+        display: none;
+    }
+    
+    .site-title {
+        display: block;
+        text-align: center;
+        padding: 20px 0;
+    }
+    
+    .site-title h1 {
+        font-size: 2.2em;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+    }
+    
+    .main-nav {
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+        border-top: none;
+        padding: 0;
+    }
+    
+    .main-nav a {
+        padding: 8px 16px;
+        border-bottom: none;
+        border-radius: 20px;
+        border: 2px solid transparent;
+    }
+    
+    .main-content {
+        border-radius: 15px;
+        padding: 30px;
+        margin: 20px auto;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    
+    .products-table {
+        font-size: 13px;
+    }
+    
+    .products-table th {
+        font-size: 13px;
+        padding: 12px 10px;
+    }
+    
+    .hide-mobile {
+        display: table-cell;
+    }
+    
+    .form-row {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .form-row .form-group {
+        flex: 1;
+    }
+    
+    .radio-group {
+        flex-direction: row;
+        gap: 15px;
+    }
+    
+    .submit-btn {
+        width: auto;
+        padding: 12px 35px;
+    }
+}
+
+/* Десктоп (992px и выше) */
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .header-content {
+        padding: 15px 0;
+        border-bottom: 2px solid #667eea;
+    }
+    
+    .main-nav {
+        gap: 25px;
+    }
+    
+    .site-title h1 {
+        font-size: 2.5em;
+    }
+    
+    .main-content {
+        padding: 40px;
+        margin: 30px auto;
+    }
+    
+    .products-table {
+        font-size: 14px;
+    }
+    
+    .products-table th {
+        font-size: 14px;
+        padding: 15px 12px;
+    }
+    
+    /* Возвращаем исходный порядок на десктопе */
+    #table {
+        order: 2;
+    }
+    
+    #links {
+        order: 1;
+    }
+    
+    #form {
+        order: 3;
+    }
+    
+    .form-group label {
+        font-size: 16px;
+    }
+    
+    .form-group input, 
+    .form-group textarea, 
+    .form-group select {
+        font-size: 16px;
+        padding: 12px;
+    }
+}

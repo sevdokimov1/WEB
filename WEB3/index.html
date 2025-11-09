@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUBSU.store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Шапка с логотипом -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="site-title-mobile">
+                    <h1>KUBSU.store</h1>
+                </div>
+                <div class="logo">
+                    <img src=logo.png alt="KUBSU.store Logo" width="50" height="50">
+                </div>
+            </div>
+            
+            <!-- Навигация для мобильных -->
+            <nav class="main-nav">
+                <a href="#table">Товары</a>
+                <a href="#form">Заказ</a>
+                <a href="#links">Ссылки</a>
+            </nav>
+
+            <div class="site-title">
+                <h1>KUBSU.store - магазин электроники</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <!-- Секция с таблицей (на мобильных будет выше) -->
+        <section id="table" class="content-section">
+            <h2>Каталог игровых компьютеров</h2>
+            <div class="table-container">
+                <table class="products-table">
+                    <thead>
+                        <tr>
+                            <th>Код</th>
+                            <th>Модель</th>
+                            <th class="hide-mobile">Процессор</th>
+                            <th class="hide-mobile">Видеокарта</th>
+                            <th>Память</th>
+                            <th>Цена</th>
+                            <th>Наличие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GPC-001</td>
+                            <td>Alienware Aurora</td>
+                            <td class="hide-mobile">Intel i9-13900K</td>
+                            <td class="hide-mobile">RTX 4090</td>
+                            <td>32 GB</td>
+                            <td>289 990 ₽</td>
+                            <td><span class="status-available">В наличии</span></td>
+                        </tr>
+                        <tr>
+                            <td>GPC-002</td>
+                            <td>ASUS ROG Strix</td>
+                            <td class="hide-mobile">AMD Ryzen 9</td>
+                            <td class="hide-mobile">RTX 4080</td>
+                            <td>64 GB</td>
+                            <td>214 990 ₽</td>
+                            <td><span class="status-order">Под заказ</span></td>
+                        </tr>
+                        <tr>
+                            <td>GPC-003</td>
+                            <td>MSI MEG Trident</td>
+                            <td class="hide-mobile">Intel i7-13700K</td>
+                            <td class="hide-mobile">RTX 4070 Ti</td>
+                            <td>32 GB</td>
+                            <td>167 500 ₽</td>
+                            <td><span class="status-available">В наличии</span></td>
+                        </tr>
+                        <tr>
+                            <td>GPC-004</td>
+                            <td>HP Omen 45L</td>
+                            <td class="hide-mobile">AMD Ryzen 7</td>
+                            <td class="hide-mobile">RX 7900 XTX</td>
+                            <td>16 GB</td>
+                            <td>142 300 ₽</td>
+                            <td><span class="status-available">В наличии</span></td>
+                        </tr>
+                        <tr>
+                            <td>GPC-005</td>
+                            <td>Lenovo Legion</td>
+                            <td class="hide-mobile">Intel i5-13600K</td>
+                            <td class="hide-mobile">RTX 4060 Ti</td>
+                            <td>32 GB</td>
+                            <td>98 750 ₽</td>
+                            <td><span class="status-unavailable">Нет в наличии</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Секция с гиперссылками (на мобильных будет ниже) -->
+        <section id="links" class="content-section">
+            <h2>Полезные ссылки</h2>
+            <ul class="links-list">
+                <li><a href="http://kubsu.ru" target="_blank">Абсолютная ссылка на kubsu.ru</a></li>
+                <li><a href="https://kubsu.ru" target="_blank">Абсолютная ссылка на kubsu.ru (HTTPS)</a></li>
+                <li><a href="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" target="_blank">Ссылка-изображение Google</a></li>
+                <li><a href="/catalog">Сокращенная ссылка на каталог</a></li>
+                <li><a href="/">Сокращенная ссылка на главную</a></li>
+                <li><a href="#table">Ссылка на таблицу ниже</a></li>
+                <li><a href="https://example.com?param1=value1&param2=value2&param3=value3">Ссылка с тремя параметрами</a></li>
+                <li><a href="https://example.com?user_id=12345">Ссылка с параметром id</a></li>
+                <li><a href="contacts.html">Относительная ссылка в текущем каталоге</a></li>
+                <li><a href="about/company.html">Относительная ссылка в каталоге about</a></li>
+                <li><a href="../page.html">Ссылка на уровень выше</a></li>
+                <li><a href="../../page.html">Ссылка на два уровня выше</a></li>
+            </ul>
+
+            <p>Это пример <a href="https://ru.wikipedia.org/wiki/Электроника" class="context-link">контекстной ссылки</a> внутри текста абзаца для получения дополнительной информации об электронике.</p>
+
+            <h3>Фрагмент на Wikipedia</h3>
+            <ul class="special-links">
+                <li><a href="">Ссылка с пустым href</a></li>
+                <li><a>Ссылка без href</a></li>
+                <li><a href="https://example.com" rel="nofollow">Ссылка без индексирования перехода</a></li>
+                <li><a href="https://example.com" rel="noopener">Ссылка без индексирования страницы</a></li>
+            </ul>
+
+            <h3>Нумерованный список ссылок с подписями</h3>
+            <ol class="numbered-links">
+                <li><a href="https://google.com">Google</a> - поисковая система</li>
+                <li><a href="https://yandex.ru">Яндекс</a> - российская поисковая система</li>
+                <li><a href="ftp://example.com/file.txt">FTP-сервер с авторизацией</a></li>
+            </ol>
+        </section>
+
+        <!-- Секция с формой -->
+        <section id="form" class="content-section">
+            <h2>Форма заказа</h2>
+            <form class="order-form">
+                <div class="form-group">
+                    <label for="name">ФИО:</label>
+                    <input type="text" id="name" name="name" placeholder="Введите ваше ФИО">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+7 (XXX) XXX-XX-XX">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="example@mail.ru">
+                </div>
+
+                <div class="form-group">
+                    <label for="birthdate">Дата рождения:</label>
+                    <input type="date" id="birthdate" name="birthdate">
+                </div>
+
+                <div class="form-group">
+                    <label>Пол:</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="gender" value="male"> Мужской
+                        </label>
+                        <label>
+                            <input type="radio" name="gender" value="female"> Женский
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="programming-language">Любимый язык программирования:</label>
+                    <select id="programming-language" name="programming-language" class="language-select">
+                        <option value="">-- Выберите язык --</option>
+                        <option value="python">Python</option>
+                        <option value="cpp">C++</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="java">Java</option>
+                        <option value="php">PHP</option>
+                        <option value="csharp">C#</option>
+                        <option value="ruby">Ruby</option>
+                        <option value="go">Go</option>
+                        <option value="rust">Rust</option>
+                        <option value="swift">Swift</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="bio">Биография:</label>
+                    <textarea id="bio" name="bio" rows="4" placeholder="Расскажите о себе..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Отправить заявку</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Подвал -->
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; 2024 KUBSU.store. Евдокимов Александр</p>
+        </div>
+    </footer>
+</body>
+</html>
