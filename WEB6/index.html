@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор стоимости услуги</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            padding: 8px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-group label {
+            font-weight: normal;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Калькулятор стоимости услуги</h1>
+    
+    <div class="form-group">
+        <label for="quantity">Количество:</label>
+        <input type="number" id="quantity" value="1" min="1">
+    </div>
+
+    <div class="form-group">
+        <label>Тип услуги:</label>
+        <div class="radio-group">
+            <label>
+                <input type="radio" name="serviceType" value="basic" checked> 
+                Базовая услуга - 1000 ₽
+            </label>
+            <label>
+                <input type="radio" name="serviceType" value="premium"> 
+                Премиум услуга - 2000 ₽
+            </label>
+            <label>
+                <input type="radio" name="serviceType" value="vip"> 
+                VIP услуга - 3000 ₽
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group hidden" id="optionsGroup">
+        <label for="options">Опция услуги:</label>
+        <select id="options">
+            <option value="standard">Стандартная опция (+0 ₽)</option>
+            <option value="express">Экспресс опция (+500 ₽)</option>
+            <option value="priority">Приоритетная опция (+1000 ₽)</option>
+        </select>
+    </div>
+
+    <div class="form-group hidden" id="propertyGroup">
+        <label>
+            <input type="checkbox" id="property"> 
+            Дополнительное свойство (+1000 ₽)
+        </label>
+    </div>
+
+    <div class="result" id="result">
+        Общая стоимость: 1000 ₽
+    </div>
+
+    <script>
+        // Базовая стоимость для каждого типа услуги
+        const basePrices = {
+            basic: 1000,
+            premium: 2000,
+            vip: 3000
+        };
+
+        // Дополнительные стоимости для опций
+        const optionPrices = {
+            standard: 0,
+            express: 500,
+            priority: 1000
+        };
+
+        // Элементы DOM
+        const quantityInput = document.getElementById('quantity');
+        const serviceTypeRadios = document.querySelectorAll('input[name="serviceType"]');
+        const optionsGroup = document.getElementById('optionsGroup');
+        const optionsSelect = document.getElementById('options');
+        const propertyGroup = document.getElementById('propertyGroup');
+        const propertyCheckbox = document.getElementById('property');
+        const resultElement = document.getElementById('result');
+
+        // Функция расчета стоимости
+        function calculateTotal() {
+            const quantity = parseInt(quantityInput.value) || 1;
+            const selectedService = document.querySelector('input[name="serviceType"]:checked').value;
+            
+            let total = basePrices[selectedService] * quantity;
+            
+            // Добавляем стоимость опции для premium услуги
+            if (selectedService === 'premium') {
+                const selectedOption = optionsSelect.value;
+                total += optionPrices[selectedOption] * quantity;
+            }
+            
+            // Добавляем стоимость свойства для vip услуги
+            if (selectedService === 'vip' && propertyCheckbox.checked) {
+                total += 1000 * quantity;
+            }
+            
+            resultElement.textContent = `Общая стоимость: ${total} ₽`;
+        }
+
+        // Функция обновления видимости элементов
+        function updateVisibility() {
+            const selectedService = document.querySelector('input[name="serviceType"]:checked').value;
+            
+            // Скрываем все дополнительные элементы
+            optionsGroup.classList.add('hidden');
+            propertyGroup.classList.add('hidden');
+            
+            // Показываем нужные элементы в зависимости от типа услуги
+            if (selectedService === 'premium') {
+                optionsGroup.classList.remove('hidden');
+            } else if (selectedService === 'vip') {
+                propertyGroup.classList.remove('hidden');
+            }
+        }
+
+        // Обработчики событий
+        quantityInput.addEventListener('input', calculateTotal);
+        
+        serviceTypeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                updateVisibility();
+                calculateTotal();
+            });
+        });
+        
+        optionsSelect.addEventListener('change', calculateTotal);
+        propertyCheckbox.addEventListener('change', calculateTotal);
+
+        // Инициализация
+        updateVisibility();
+        calculateTotal();
+    </script>
+</body>
+</html>
