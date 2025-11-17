@@ -10,12 +10,17 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            background-color: #f5f5f5;
         }
         
         .gallery-container {
             position: relative;
             overflow: hidden;
             margin-bottom: 20px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
         .gallery {
@@ -34,27 +39,40 @@
             height: 200px;
             object-fit: cover;
             border-radius: 8px;
+            background: #e0e0e0;
+            display: block;
         }
         
         .nav-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.7);
             color: white;
             border: none;
-            padding: 15px;
+            padding: 15px 20px;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 24px;
             z-index: 10;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+        
+        .nav-btn:hover:not(:disabled) {
+            background: rgba(0,0,0,0.9);
+        }
+        
+        .nav-btn:disabled {
+            background: rgba(0,0,0,0.3);
+            cursor: not-allowed;
         }
         
         .prev-btn {
-            left: 10px;
+            left: 20px;
         }
         
         .next-btn {
-            right: 10px;
+            right: 20px;
         }
         
         .pager {
@@ -65,6 +83,14 @@
         .page-info {
             font-size: 16px;
             color: #333;
+            font-weight: bold;
+        }
+
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
         }
 
         /* Мобильная версия */
@@ -74,8 +100,16 @@
             }
             
             .nav-btn {
-                padding: 10px;
-                font-size: 14px;
+                padding: 12px 16px;
+                font-size: 18px;
+            }
+            
+            .prev-btn {
+                left: 10px;
+            }
+            
+            .next-btn {
+                right: 10px;
             }
         }
     </style>
@@ -88,31 +122,27 @@
         <button class="nav-btn next-btn">›</button>
         
         <div class="gallery" id="gallery">
-            <div class="gallery-item">
-                <img src="https://picsum.photos/400/300?random=1" alt="Изображение 1">
-            </div>
-            <div class="gallery-item">
-                <img src="https://picsum.photos/400/300?random=2" alt="Изображение 2">
-            </div>
-            <div class="gallery-item">
-                <img src="https://picsum.photos/400/300?random=3" alt="Изображение 3">
-            </div>
-            <div class="gallery-item">
-                <img src="https://picsum.photos/400/300?random=4" alt="Изображение 4">
-            </div>
-            <div class="gallery-item">
-                <img src="https://picsum.photos/400/300?random=5" alt="Изображение 5">
-            </div>
-            <div class="gallery-item">
-                <img src="https://picsum.photos/400/300?random=6" alt="Изображение 6">
-            </div>
-            <div class="gallery-item">
-                <img src="https://picsum.photos/400/300?random=7" alt="Изображение 7">
-            </div>
-            <div class="gallery-item">
-                <img src="https://picsum.photos/400/300?random=8" alt="Изображение 8">
-            </div>
-        </div>
+            <!-- Изображения с обработкой ошибок -->
+            <div class="gallery" id="gallery">
+    <div class="gallery-item">
+        <img src="ph_1.jpeg" alt="Мое фото 1">
+    </div>
+    <div class="gallery-item">
+        <img src="ph_2.jpeg" alt="Мое фото 2">
+    </div>
+    <div class="gallery-item">
+        <img src="ph_3.jpeg" alt="Мое фото 3">
+    </div>
+    <div class="gallery-item">
+        <img src="ph_4.jpeg" alt="Мое фото 4">
+    </div>
+    <div class="gallery-item">
+        <img src="ph_5.jpeg" alt="Мое фото 5">
+    </div>
+    <div class="gallery-item">
+        <img src="ph_6.jpeg" alt="Мое фото 6">
+    </div>
+</div>
     </div>
     
     <div class="pager">
@@ -130,7 +160,6 @@
             let itemsPerPage;
             let totalPages;
             
-            // Определяем количество элементов на странице в зависимости от ширины экрана
             function updateItemsPerPage() {
                 if (window.innerWidth <= 768) {
                     itemsPerPage = 1;
@@ -141,18 +170,15 @@
                 updateGallery();
             }
             
-            // Обновляем отображение галереи
             function updateGallery() {
                 const offset = -currentPage * (100 / itemsPerPage);
                 gallery.style.transform = `translateX(${offset}%)`;
                 pageInfo.textContent = `Страница ${currentPage + 1} из ${totalPages}`;
                 
-                // Блокируем кнопки на границах
                 prevBtn.disabled = currentPage === 0;
                 nextBtn.disabled = currentPage === totalPages - 1;
             }
             
-            // Переход к предыдущей странице
             prevBtn.addEventListener('click', function() {
                 if (currentPage > 0) {
                     currentPage--;
@@ -160,7 +186,6 @@
                 }
             });
             
-            // Переход к следующей странице
             nextBtn.addEventListener('click', function() {
                 if (currentPage < totalPages - 1) {
                     currentPage++;
@@ -168,19 +193,33 @@
                 }
             });
             
-            // Обработчик изменения размера окна
             window.addEventListener('resize', function() {
                 const oldItemsPerPage = itemsPerPage;
                 updateItemsPerPage();
                 
-                // Пересчитываем текущую страницу при изменении количества элементов
                 if (oldItemsPerPage !== itemsPerPage) {
                     currentPage = Math.floor(currentPage * oldItemsPerPage / itemsPerPage);
                     updateGallery();
                 }
             });
             
-            // Инициализация
+            // Предзагрузка изображений
+            const images = gallery.querySelectorAll('img');
+            images.forEach(img => {
+                if (img.complete) {
+                    img.style.opacity = '1';
+                } else {
+                    img.style.opacity = '0';
+                    img.addEventListener('load', function() {
+                        this.style.opacity = '1';
+                    });
+                    img.addEventListener('error', function() {
+                        this.style.opacity = '1';
+                        console.log('Ошибка загрузки изображения:', this.alt);
+                    });
+                }
+            });
+            
             updateItemsPerPage();
         });
     </script>
