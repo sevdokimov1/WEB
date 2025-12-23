@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма обратной связи</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<!-- Основной контент страницы -->
+<div class="container">
+    <header>
+        <h1>Добро пожаловать на наш сайт</h1>
+        <p>Здесь вы можете оставить заявку для получения консультации</p>
+    </header>
+
+    <main>
+        <section class="content">
+            <h2>Наши услуги</h2>
+            <p>Мы предоставляем широкий спектр услуг для вашего бизнеса:</p>
+            <ul>
+                <li>Консультации по разработке</li>
+                <li>Техническая поддержка</li>
+                <li>Веб-разработка</li>
+                <li>Интеграция систем</li>
+            </ul>
+        </section>
+
+        <section class="content">
+            <h2>О компании</h2>
+            <p>Мы работаем на рынке IT-услуг более 10 лет и имеем множество довольных клиентов.</p>
+        </section>
+    </main>
+
+    <!-- Кнопка для открытия формы -->
+    <button id="openFormBtn" class="floating-btn">
+        <i class="fas fa-comment-dots"></i> Обратная связь
+    </button>
+</div>
+
+<!-- Модальное окно с формой -->
+<div id="feedbackModal" class="modal">
+    <div class="modal-content">
+        <!-- Заголовок формы с кнопкой закрытия -->
+        <div class="modal-header">
+            <h2>Форма обратной связи</h2>
+            <button id="closeModalBtn" class="close-btn" aria-label="Закрыть форму">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Форма -->
+        <form id="feedbackForm">
+            <div class="form-group">
+                <label for="fullName">
+                    <i class="fas fa-user"></i> ФИО *
+                </label>
+                <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="Введите ваше полное имя"
+                        required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">
+                    <i class="fas fa-envelope"></i> Email *
+                </label>
+                <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="example@mail.ru"
+                        required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="phone">
+                    <i class="fas fa-phone"></i> Телефон *
+                </label>
+                <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="+7 (999) 123-45-67"
+                        required
+                        pattern="^\+?[0-9\s\-\(\)]+$"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="organization">
+                    <i class="fas fa-building"></i> Организация
+                </label>
+                <input
+                        type="text"
+                        id="organization"
+                        name="organization"
+                        placeholder="Название вашей организации"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="message">
+                    <i class="fas fa-comment"></i> Сообщение *
+                </label>
+                <textarea
+                        id="message"
+                        name="message"
+                        rows="5"
+                        placeholder="Опишите ваш вопрос или предложение..."
+                        required
+                ></textarea>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input
+                        type="checkbox"
+                        id="privacyPolicy"
+                        name="privacyPolicy"
+                        required
+                >
+                <label for="privacyPolicy">
+                    Я соглашаюсь с
+                    <a href="#" class="policy-link">политикой обработки персональных данных</a> *
+                </label>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Отправить
+                </button>
+                <button type="reset" class="reset-btn" id="resetFormBtn">
+                    <i class="fas fa-redo"></i> Очистить
+                </button>
+            </div>
+
+            <div class="required-note">* Поля, обязательные для заполнения</div>
+        </form>
+
+        <!-- Сообщение об успешной отправке или ошибке -->
+        <div id="messageContainer" class="message-container"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
