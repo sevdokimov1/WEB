@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript" src="https://formcarry.com/s/Zu-t_yEni3U"></script>
     <style>
         /* СБРОС И БАЗОВЫЕ НАСТРОЙКИ */
         * {
@@ -1214,9 +1214,6 @@
     </footer>
 
     <script>
-                (function() {
-            emailjs.init("Rid5hAcPUfFrAVcE3");
-        })();
 
         const carouselImages = [
             "1.jpg", "17.jpg", "2.jpg", "16.jpg", "3.jpg", "15.jpg", 
@@ -1553,25 +1550,32 @@
             formMessage.className = 'form-message';
             formMessage.style.display = 'none';
             
-            try {
-                const response = await emailjs.send(
-                    'service_fa37fei',
-                    'template_x6m7jld',
-                    {
-                        to_name: "Владелец студии",
-                        from_name: formData.name,
-                        from_email: formData.email,
-                        phone: formData.phone,
-                        session_type: formData.sessionType,
-                        location_type: formData.locationType,
-                        preferred_studio: formData.preferredStudio || 'Не указано',
-                        preferred_date: formData.preferredDate || 'Не указано',
-                        message: formData.message || 'Не указано',
-                        calculated_price: formData.calculatedPrice + ' ₽',
-                        calculation_details: formData.calculationDetails,
-                        date: new Date().toLocaleString('ru-RU')
-                    }
-                );
+                        try {
+                // Отправляем на FormCarry
+                const response = await fetch('https://formcarry.com/s/Zu-t_yEni3U', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formDataObject)
+                });
+
+                if (response.ok) {
+                    showFormMessage('success', '✅ Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    bookingFormContent.reset();
+                } else {
+                    throw new Error(`Ошибка сервера: ${response.status}`);
+                }
+                
+            } catch (error) {
+                console.error('Ошибка отправки формы:', error);
+                showFormMessage('error', '❌ Произошла ошибка при отправке заявки. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
+            } finally {
+                submitBtn.disabled = false;
+                submitText.style.display = 'inline';
+                submitSpinner.style.display = 'none';
+            }
                 
                 showFormMessage('success', 'Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
                 bookingFormContent.reset();
@@ -1754,4 +1758,5 @@
         });
     </script>
 </body>
+
 </html>
