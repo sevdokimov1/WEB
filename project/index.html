@@ -1847,19 +1847,22 @@
 bookingFormContent.addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    // Собираем данные формы
-    const formData = {
-        name: document.getElementById('name').value,
-        phone: document.getElementById('phone').value,
-        email: document.getElementById('email').value,
-        sessionType: document.getElementById('sessionType').value,
-        locationType: document.getElementById('locationType').value,
-        preferredStudio: document.getElementById('preferredStudio').value,
-        preferredDate: document.getElementById('preferredDate').value,
-        message: document.getElementById('message').value,
-        calculatedPrice: calculatePrice(),
-        calculationDetails: getCalculationDetails()
-    };
+    // Собираем данные в правильном формате для Formcarry
+    const formData = new FormData();
+    
+    // Основные поля формы
+    formData.append('name', document.getElementById('name').value);
+    formData.append('phone', document.getElementById('phone').value);
+    formData.append('email', document.getElementById('email').value);
+    formData.append('sessionType', document.getElementById('sessionType').value);
+    formData.append('locationType', document.getElementById('locationType').value);
+    formData.append('preferredStudio', document.getElementById('preferredStudio').value);
+    formData.append('preferredDate', document.getElementById('preferredDate').value);
+    formData.append('message', document.getElementById('message').value);
+    
+    // Дополнительные поля
+    formData.append('calculatedPrice', calculatePrice());
+    formData.append('calculationDetails', getCalculationDetails());
 
     // Показываем индикатор загрузки
     submitBtn.disabled = true;
@@ -1873,14 +1876,12 @@ bookingFormContent.addEventListener('submit', async function(e) {
         // Отправляем данные в Formcarry
         const response = await fetch('https://formcarry.com/s/Zu-t_yEni3U', {
             method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
+            body: formData
         });
 
         const result = await response.json();
+
+        console.log('Formcarry response:', result); // Для отладки
 
         if (response.ok && result.code === 200) {
             // Успешная отправка
@@ -1888,7 +1889,9 @@ bookingFormContent.addEventListener('submit', async function(e) {
             bookingFormContent.reset();
         } else {
             // Ошибка от Formcarry
-            throw new Error(result.message || 'Ошибка отправки формы');
+            const errorMsg = result.message || 'Ошибка отправки формы';
+            console.error('Formcarry error:', result);
+            throw new Error(errorMsg);
         }
 
     } catch (error) {
