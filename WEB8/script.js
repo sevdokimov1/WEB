@@ -1,6 +1,6 @@
 // Конфигурация - замените на ваш URL из formcarry.com или slapform.com
 // Получите бесплатный URL на formcarry.com (регистрация бесплатна)
-const FORM_SUBMIT_URL = 'https://formcarry.com/s/Zu-t_yEni3U'; // ЗАМЕНИТЕ на ваш URL
+const FORM_SUBMIT_URL = 'Zu-t_yEni3U'; // ЗАМЕНИТЕ на ваш URL
 const STORAGE_KEY = 'feedbackFormData';
 const FORM_STATE_KEY = 'formOpenState';
 
